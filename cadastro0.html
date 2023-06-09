@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Área de Cadastro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #000000, #ff1493, #000080, #ffffff);
+      background-size: 400% 400%;
+      animation: plasma 10s ease-in-out infinite;
+    }
+
+    @keyframes plasma {
+      0% {
+        background-position: 0% 50%;
+      }
+      25% {
+        background-position: 50% 100%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      75% {
+        background-position: 50% 0%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .content {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #000000;
+    }
+
+    input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 200px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #FF1493;
+      color: #ffffff;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>Cadastro</h1>
+      <form onsubmit="window.location.href = 'https://mrrobot.simdif.com/ol%C3%A1,_se_voc%C3%AA_quiser_me_ajuda_a_coloca_mais_func%C3%A3o_no_bot,_ou_se_quiser_fazer_parceria_entre_em_contato_comigo_.html'; return false;">
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="password" placeholder="Senha" required>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

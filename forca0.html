@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo da Forca</title>
+    <style>
+        body {
+            background-color: #14213d;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .game-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .word-display {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .letter-input {
+            font-size: 18px;
+            padding: 5px;
+            width: 30px;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        .guess-button {
+            font-size: 18px;
+            padding: 5px 10px;
+            background-color: #ff9800;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .guess-button:hover {
+            background-color: #ff5722;
+        }
+
+        .message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Jogo da Forca</h1>
+        <div class="word-display"></div>
+        <input class="letter-input" type="text" maxlength="1" />
+        <button class="guess-button">Adivinhar</button>
+        <div class="message"></div>
+    </div>
+
+    <script>
+        var words = ['GATO', 'CACHORRO', 'ABACAXI', 'BANANA', 'ELEFANTE']; // Lista de palavras para adivinhar
+        var chosenWord = '';
+        var wordDisplay = [];
+        var guesses = [];
+        var maxGuesses = 6;
+
+        function initializeGame() {
+            chosenWord = getRandomWord();
+            wordDisplay = Array(chosenWord.length).fill('_');
+            guesses = [];
+            updateWordDisplay();
+            updateGuesses();
+            clearMessage();
+        }
+
+        function getRandomWord() {
+            var randomIndex = Math.floor(Math.random() * words.length);
+            return words[randomIndex];
+        }
+
+        function updateWordDisplay() {
+            var wordDisplayElement = document.querySelector('.word-display');
+            wordDisplayElement.textContent = wordDisplay.join(' ');
+        }
+
+        function updateGuesses() {
+            var messageElement = document.querySelector('.message');
+            var guessesRemaining = maxGuesses - guesses.length;
+            messageElement.textContent = 'Tentativas Restantes: ' + guessesRemaining;
+
+            if (guessesRemaining === 0) {
+                messageElement.textContent = 'Você perdeu! A palavra era ' + chosenWord;
+            }
+        }
+
+        function clearMessage() {
+            var messageElement = document.querySelector('.message');
+            messageElement.textContent = '';
+        }
+
+        function makeGuess() {
+            var letterInput = document.querySelector('.letter-input');
+            var letter = letterInput.value.toUpperCase();
+
+            if (letter && guesses.indexOf(letter) === -1) {
+                guesses.push(letter);
+
+                if (chosenWord.includes(letter)) {
+                    updateWord(letter);
+                } else {
+                    updateGuesses();
+                }
+
+                letterInput.value = '';
+                letterInput.focus();
+            }
+        }
+
+        function updateWord(letter) {
+            for (var i = 0; i < chosenWord.length; i++) {
+                if (chosenWord[i] === letter) {
+                                        wordDisplay[i] = letter;
+                }
+            }
+
+            updateWordDisplay();
+
+            if (wordDisplay.join('') === chosenWord) {
+                var messageElement = document.querySelector('.message');
+                messageElement.textContent = 'Parabéns! Você acertou a palavra!';
+            }
+        }
+
+        // Event listeners
+        var guessButton = document.querySelector('.guess-button');
+        guessButton.addEventListener('click', makeGuess);
+
+        var letterInput = document.querySelector('.letter-input');
+        letterInput.addEventListener('keypress', function (event) {
+            if (event.keyCode === 13) {
+                makeGuess();
+            }
+        });
+
+        // Inicializar o jogo
+        initializeGame();
+    </script>
+</body>
+</html>

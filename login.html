@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wolf Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg {
+      background-image:
+      url("images (7).jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .login-box {
+      width: 300px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    p.login {
+      color: #ffffff;
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-box {
+      margin-bottom: 20px;
+    }
+
+    .user-box input {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #ffffff;
+      color: #ffffff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .user-box label {
+      color: #ffffff;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      background-color: #00ff00;
+      border: none;
+      color: #ffffff;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <div class="login-box">
+      <p class="login">Login</p>
+      <form>
+        <div class="user-box">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="user-box">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <a href="logout0.html" class="submit-button">Submit</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
